@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.2/dist/full.css" rel="stylesheet" type="text/css" />
+     <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+     <!-- <h1>hello</h1> -->
+     <main>
+          <section class="bg-gray-200 p-4">
+               <input id="search-field" type="text" placeholder="Type here...." class="input input-bordered w-full max-w-xs" />
+               <button onclick="handleSearch()" class="btn btn-primary bg-green-500">Search</button>
+               <!-- 2ns search bar -->
+               <input id="search-field2" type="text" placeholder ="Type here...." class="input input-bordered w-full max-w-xs" />
+               <button onclick="handleSearch2()" class="btn btn-primary bg-blue-500">Search</button>
+          </section>
+          <section class="container mx-auto mt-10">
+               <div id="loading-spinier" class="text-center hidden">
+                    <span class="loading loading-spinner  loading-lg"></span>
+               </div>
+               <div id="phone-container" class="grid  md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- <div class="card w-96 bg-base-100 shadow-xl">
+                         <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+                         <div class="card-body">
+                           <h2 class="card-title">Shoes!</h2>
+                           <p>If a dog chews shoes whose shoes does he choose?</p>
+                           <div class="card-actions justify-end">
+                             <button class="btn btn-primary">Buy Now</button>
+                           </div>
+                         </div>
+                       </div> -->
+               </div>
+               <!-- show all btn -->
+               <div id="show-btn" class="hidden text-center my-8">
+                    <button onclick="handleShowBtn()"  class="btn btn-accent">Show More</button>
+               </div>
+          </section>
+     </main>
+     <script src="./js/styles.js"></script>
+</body>
+</html>
