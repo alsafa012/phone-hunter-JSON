@@ -20,11 +20,10 @@ const displayPhones = (phones) => {
      // console.log("sdhsjdh", isShowAll);
      // display only few numbers of phone
 
-          phones = phones.slice(0, 12);
-     
+     phones = phones.slice(0, 12);
 
      phones.forEach((phone) => {
-          console.log(phone)
+          // console.log(phone)
           const phoneCard = document.createElement("div");
           phoneCard.classList = `mb-5 p-5 card bg-base-100 shadow-xl`;
           phoneCard.innerHTML = `
@@ -33,7 +32,7 @@ const displayPhones = (phones) => {
             <h2 class="card-title">${phone.phone_name}</h2>
             <p>If a dog chews shoes whose shoes does he choose?</p>
             <div class="card-actions justify-end">
-              <button onclick ='handleShowDetails()' class="btn btn-primary">Show Details</button>
+              <button onclick ="handleShowDetails('${phone.slug}')" class="btn btn-primary">Show Details</button>
             </div>
           </div>     
           `;
@@ -70,16 +69,39 @@ const loading = (isLoading) => {
 };
 // show more btn
 const handleShowBtn = () => {
-
-     console.log('show')
+     console.log("show");
      // handleSearch(true);
 };
 
-// 
-const handleShowDetails = (id) =>{
-     console.log('showDetails',id);
-}
+//
+const handleShowDetails = async (id) => {
+     // console.log('showDetails',id);
+     const res = await fetch(
+          `https://openapi.programming-hero.com/api/phone/${id}`
+     );
+     const data = await res.json();
+     // console.log(data)
+     const phone = data.data;
 
+     showPhoneDetails(phone);
+};
+const showPhoneDetails = (phone) => {
+     console.log(phone);
 
+     const showDetail = document.getElementById("show-details-container");
+      showDetail.classList =`p-5 space-y-5`
+     showDetail.innerHTML = `
+     <img src="${phone.image}" alt="">
+     <p> Brand: ${phone.brand}</p>
+     <p> Name: ${phone.name}</p>
+     <p> GPS: ${phone?.others?.GPS || 'No GPS available'}</p>
+     <p> Storage: ${phone.mainFeatures.storage}</p>
+     <p> Display: ${phone.mainFeatures.displaySize}</p>
+     <p> Performance: ${phone.mainFeatures.chipSet}</p>
+     <p> Memory: ${phone.mainFeatures.memory}</p>
+     
+     `;
+     show_details_modal.showModal();
+};
 // loadPhones();
 // a(data)
